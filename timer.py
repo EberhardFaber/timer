@@ -2,7 +2,14 @@ import time
 
 
 def inp():
-    day, hou, m, sec = map(int, input("Введите время в формате д ч м с: ").split())
+    try:
+        d, h, mi, s = map(int, input("Введите время в формате д ч м с: ").split())
+        transform(d, h, mi, s)
+    except ValueError:
+        inv_form()
+
+
+def transform(day, hou, m, sec):
     while sec > 59:
         m = m + sec // 60
         sec = sec % 60
@@ -12,7 +19,7 @@ def inp():
     while hou > 23:
         day = day + hou // 24
         hou = hou % 24
-    main(day, hou, m, sec)
+    return main(day, hou, m, sec)
 
 
 def main(day, hou, m, sec):
@@ -46,14 +53,4 @@ def end():
 
 def inv_form():
     print("Неверная форма. Пожалуйста, введите снова: ")
-    start()
-
-
-def start():
-    try:
-        inp()
-    except ValueError:
-        inv_form()
-
-
-inp()
+    inp()
