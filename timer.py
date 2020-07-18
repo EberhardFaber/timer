@@ -3,6 +3,15 @@ import time
 
 def inp():
     day, hou, m, sec = map(int, input("Введите время в формате д ч м с: ").split())
+    while sec > 59:
+        m = m + sec // 60
+        sec = sec % 60
+    while m > 59:
+        hou = hou + m // 60
+        m = m % 60
+    while hou > 23:
+        day = day + hou // 24
+        hou = hou % 24
     main(day, hou, m, sec)
 
 
@@ -47,4 +56,4 @@ def start():
         inv_form()
 
 
-start()
+inp()
