@@ -1,82 +1,25 @@
 import time
 
 
-def timer(s):
-    b = check(s)
-    print(b)
-    if s is None:
-        start()
-    elif s != 0:
-        for i in range(0, s):
-            print(s-i)
-            time.sleep(1)
-        print("0")
-        tu()
-    elif s == 0:
-        tu()
+day, hou, m, sec = map(int, input("время в формате д ч м с ").split())
 
 
-def tu():
-    inp = input("time's up! again? y/n: ")
-    if inp == "y":
-        try:
-            s = int(input("type:tu "))
-            timer(s)
-        except ValueError:
-            inv_form()
-    elif inp == "n":
-        print("bye!")
-        exit()
-    else:
-        print("input error")
-        tu()
+def main():
+    global day, hou, m, sec
+    for x in range(0, day+1):
+        for y in range(0, hou+1):
+            for z in range(0, m+1):
+                for w in range(0, sec+1):
+                    print(day, " ", hou, " ", m, " ", sec)
+                    sec = sec - 1
+                    time.sleep(1)
+                sec = 59
+                m = m - 1
+            m = 59
+            hou = hou - 1
+        hou = 23
+        day = day - 1
+    print("end")
 
 
-def inv_form():
-    print("invalid format. type again (0-59): ")
-    try:
-        s = int(input())
-        return check(s)
-    except ValueError:
-        inv_form()
-
-
-def check(s):
-    if s >= 60 or s < 0:
-        inv_form()
-    elif s == 0:
-        tu()
-    else:
-        print(s, "ss")
-        return s
-
-
-def start():
-    s = int(input("type:s "))
-    return timer(s)
-
-
-start()
-
-
-#
-# import time
-#
-#
-# def start():
-#     s = int(input("secs: "))
-#     if s > 59 or s < 0:
-#         print("invalid format, type 0-59: ")
-#         start()
-#     elif s == 0:
-#         print("zero")
-#         start()
-#     else:
-#         for i in range(0, s):
-#             print(s-i)
-#             time.sleep(1)
-#         print("0")
-#     return start()
-#
-#
-# start()
+main()
