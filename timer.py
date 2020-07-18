@@ -1,11 +1,12 @@
 import time
 
 
-day, hou, m, sec = map(int, input("время в формате д ч м с ").split())
+def inp():
+    day, hou, m, sec = map(int, input("Введите время в формате д ч м с: ").split())
+    main(day, hou, m, sec)
 
 
-def main():
-    global day, hou, m, sec
+def main(day, hou, m, sec):
     for x in range(0, day+1):
         for y in range(0, hou+1):
             for z in range(0, m+1):
@@ -19,7 +20,31 @@ def main():
             hou = hou - 1
         hou = 23
         day = day - 1
-    print("end")
+    print("Время закончилось.", end=" ")
+    end()
 
 
-main()
+def end():
+    a = str(input("Ещё раз? (y/n): "))
+    if a == 'y':
+        inp()
+    elif a == 'n':
+        print("До свидания, хорошего дня!")
+    else:
+        print("Ошибка формы.", end=" ")
+        end()
+
+
+def inv_form():
+    print("Неверная форма. Пожалуйста, введите снова: ")
+    start()
+
+
+def start():
+    try:
+        inp()
+    except ValueError:
+        inv_form()
+
+
+start()
