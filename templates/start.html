@@ -2,11 +2,11 @@
 <html>
 <head>
 <style>
-p {
+div {
     margin-top: 15%;
     text-align: center;
     font-weight: 900;
-    font-size: 200px;
+    font-size: 150px;
 }
 </style>
 </head>
@@ -15,7 +15,13 @@ p {
 <p id="demo"></p>
 </div>
 <script>
-var dat = "Sep 10, 2020 0:0:0"
+year = 2020
+month = "Jul"
+day = 22
+hour = 23
+minute = 59
+second = 59
+var dat = month+" "+day+", "+year+" "+hour+":"+minute+":"+second
 var deadline = new Date(dat).getTime();
 var x = setInterval(function() {
 var now = new Date().getTime();
