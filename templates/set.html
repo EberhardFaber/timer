@@ -1,20 +1,63 @@
 <html>
+
 <head>
-<style>
-div {
-    margin-top: 15%;
-    text-align: center;
-    font-size: 30px;
-}
-</style>
+    <style>
+        .p {
+            text-align: center;
+            margin-top: 15%;
+
+        }
+        .i {
+            margin-top: 15%;
+            text-align: center;
+            font-size: 30px;
+        }
+        td {
+            margin-top: 15%;
+            font-weight: 900;
+            font-size: 150px;
+            text-align: right;
+            width: 270px;
+        }
+    </style>
 </head>
+
 <body>
-<div>
-    <form name="ourForm">
+    <div class="p">
+        <table>
+            <tr>
+                <td id="d"></td>
+                <td id="h"></td>
+                <td id="m"></td>
+                <td id="s"></td>
+            </tr>
+        </table>
+        <p id="demo"></p>
+    </div>
+    <div class="i">
         <input autocomplete="off" type="datetime-local" name="date" id="date">
-        <button>set</button>
-    </form>
-</div>
-<script src="{{ url_for('static', filename='proc.js') }}"></script>
+    </div>
+    <script>
+        var date = document.getElementById('date');
+        date.onchange = function Time() {
+            var x = setInterval(function () {
+                var deadline = Date.parse(date.value);
+                var now = new Date().getTime();
+                var t = deadline - now;
+                var days = Math.floor(t / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((t % (1000 * 60)) / 1000);
+                document.getElementById("d").innerHTML = days + 'д';
+                document.getElementById("h").innerHTML = hours + 'ч';
+                document.getElementById("m").innerHTML = minutes + 'м';
+                document.getElementById("s").innerHTML = seconds + 'с';
+                if (t < 0) {
+                    clearInterval(x);
+                    document.getElementById("demo").innerHTML = "Время истекло";
+                }
+            }, 1000);
+    }
+    </script>
 </body>
 </html>
