@@ -4,27 +4,27 @@
     <style>
         .p {
             text-align: center;
-            margin-top: 15%;
-
         }
+
         .i {
-            margin-top: 15%;
+            margin-top: 10%;
             text-align: center;
             font-size: 30px;
         }
+
         td {
             margin-top: 15%;
             font-weight: 900;
             font-size: 150px;
             text-align: right;
-            width: 270px;
+            width: 250px;
         }
     </style>
 </head>
 
 <body>
     <div class="p">
-        <table>
+        <table style="margin: auto; margin-top: 15%;">
             <tr>
                 <td id="d"></td>
                 <td id="h"></td>
@@ -32,8 +32,8 @@
                 <td id="s"></td>
             </tr>
         </table>
-        <p id="demo"></p>
     </div>
+    <p id="demo" style="text-align: center;"></p>
     <div class="i">
         <input autocomplete="off" type="datetime-local" name="date" id="date">
     </div>
@@ -54,10 +54,15 @@
                 document.getElementById("s").innerHTML = seconds + 'с';
                 if (t < 0) {
                     clearInterval(x);
+                    document.getElementById("d").innerHTML = '0д';
+                    document.getElementById("h").innerHTML = '0ч';
+                    document.getElementById("m").innerHTML = '0м';
+                    document.getElementById("s").innerHTML = '0с';
                     document.getElementById("demo").innerHTML = "Время истекло";
                 }
             }, 1000);
-    }
+        }
     </script>
 </body>
+
 </html>
