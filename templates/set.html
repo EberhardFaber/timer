@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <html>
 <head>
 <style>
@@ -11,12 +10,11 @@ div {
 </head>
 <body>
 <div>
-    <form method="post" action="start">
-        <input autocomplete="off" type="datetime-local" name="date">
+    <form name="ourForm">
+        <input autocomplete="off" type="datetime-local" name="date" id="date">
         <button>set</button>
     </form>
 </div>
-<script>
-</script>
+<script src="{{ url_for('static', filename='proc.js') }}"></script>
 </body>
 </html>

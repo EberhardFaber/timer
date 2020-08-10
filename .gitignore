@@ -103,3 +103,12 @@ dist
 # TernJS port file
 .tern-port
 /timer2.py
+.idea/.gitignore
+.idea/misc.xml
+.idea/modules.xml
+.idea/timer.iml
+.idea/vcs.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.vscode/settings.json
+__pycache__/timer.cpython-36.pyc
+.gitignore
